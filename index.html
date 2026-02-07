@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Life OS</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">
+          <span class="brand__title" data-i18n="app_title">Life OS</span>
+          <span class="brand__subtitle" data-i18n="app_subtitle">Personal Life Manager</span>
+        </div>
+        <nav class="nav">
+          <button class="nav__item is-active" data-section="dashboard" data-i18n="nav_dashboard">Dashboard</button>
+          <button class="nav__item" data-section="university" data-i18n="nav_university">University</button>
+          <button class="nav__item" data-section="courses" data-i18n="nav_courses">Courses</button>
+          <button class="nav__item" data-section="calendar" data-i18n="nav_calendar">Time & Meetings</button>
+          <button class="nav__item" data-section="gym" data-i18n="nav_gym">Gym</button>
+          <button class="nav__item" data-section="youtube" data-i18n="nav_youtube">YouTube</button>
+          <button class="nav__item" data-section="settings" data-i18n="nav_settings">Settings</button>
+        </nav>
+        <div class="sidebar__footer">
+          <p data-i18n="sidebar_hint">Single-user private workspace</p>
+        </div>
+      </aside>
+
+      <main class="content">
+        <header class="topbar">
+          <div>
+            <h1 data-i18n="header_title">Your Life OS</h1>
+            <p data-i18n="header_subtitle">Minimal, focused, and always in sync.</p>
+          </div>
+          <div class="topbar__actions">
+            <div class="time">
+              <span class="time__date" id="today-date"></span>
+              <span class="time__clock" id="current-time"></span>
+            </div>
+            <button class="lang-toggle" id="lang-toggle" aria-label="Toggle language">AR</button>
+          </div>
+        </header>
+
+        <section class="section is-active" id="dashboard">
+          <div class="section__header">
+            <h2 data-i18n="dashboard_title">Dashboard</h2>
+            <p data-i18n="dashboard_subtitle">Control center pulling data from every system.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3 data-i18n="dashboard_today">Today</h3>
+              <ul class="list">
+                <li data-i18n="dashboard_today_tasks">You have 2 tasks today.</li>
+                <li data-i18n="dashboard_today_reminders">2 active reminders.</li>
+                <li data-i18n="dashboard_today_events">Next event in 3 hours.</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="dashboard_reminders">Active Reminders</h3>
+              <ul class="list">
+                <li><span class="badge" data-i18n="badge_time">Time</span> <span data-i18n="reminder_lecture">Lecture at 10:00.</span></li>
+                <li><span class="badge" data-i18n="badge_study">Study</span> <span data-i18n="reminder_study">Time to study Course X.</span></li>
+                <li><span class="badge" data-i18n="badge_health">Health</span> <span data-i18n="reminder_gym">No gym activity in 3 days.</span></li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="dashboard_notifications">Notification Center</h3>
+              <p class="card__hint" data-i18n="dashboard_notifications_hint">Reminders appear here and on the dashboard.</p>
+              <ul class="list">
+                <li><span class="badge" data-i18n="badge_university">University</span> <span data-i18n="notification_exam">Exam reminder: Discrete Math at 14:00.</span></li>
+                <li><span class="badge" data-i18n="badge_learning">Learning</span> <span data-i18n="notification_session">Upcoming session: System Design at 18:30.</span></li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="dashboard_summary">Quick Summary</h3>
+              <ul class="list">
+                <li data-i18n="summary_study">Study today: 2 hours planned.</li>
+                <li data-i18n="summary_gym">Gym this week: 3 sessions.</li>
+                <li data-i18n="summary_youtube">1 unfinished YouTube idea.</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="dashboard_sources">Data Sources</h3>
+              <p data-i18n="dashboard_sources_desc">
+                Dashboard pulls from Calendar, University, Courses, Gym, and YouTube.
+              </p>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="dashboard_overview">System Overview</h3>
+              <div class="flow">
+                <div class="flow__item">
+                  <span class="flow__title" data-i18n="flow_calendar">Central Calendar</span>
+                  <p data-i18n="flow_calendar_desc">Collects university, courses, meetings, and personal events.</p>
+                </div>
+                <div class="flow__item">
+                  <span class="flow__title" data-i18n="flow_reminders">Reminder Engine</span>
+                  <p data-i18n="flow_reminders_desc">Sends alerts to the dashboard and notification area.</p>
+                </div>
+                <div class="flow__item">
+                  <span class="flow__title" data-i18n="flow_insights">Smart Insights</span>
+                  <p data-i18n="flow_insights_desc">Highlights study, gym, and YouTube progress.</p>
+                </div>
+              </div>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="dashboard_automation">Automation Rules</h3>
+              <ul class="list">
+                <li data-i18n="automation_calendar">All lectures, exams, study sessions, and meetings feed the calendar.</li>
+                <li data-i18n="automation_reminders">Reminder engine triggers time/date alerts across all pages.</li>
+                <li data-i18n="automation_insights">Smart summaries update study hours, gym streaks, and YouTube progress.</li>
+              </ul>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="dashboard_quick_add">Quick Add</h3>
+              <form class="form">
+                <label class="form__field">
+                  <span data-i18n="quick_add_title">Title</span>
+                  <input type="text" placeholder="Meeting with advisor" data-i18n-placeholder="quick_add_title_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="quick_add_date">Date</span>
+                  <input type="date" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="quick_add_time">Time</span>
+                  <input type="time" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="quick_add_type">Type</span>
+                  <select>
+                    <option data-i18n="quick_add_type_academic">Academic</option>
+                    <option data-i18n="quick_add_type_learning">Learning</option>
+                    <option data-i18n="quick_add_type_personal">Personal</option>
+                  </select>
+                </label>
+                <button type="button" class="button" data-i18n="quick_add_save">Save to Calendar</button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="university">
+          <div class="section__header">
+            <h2 data-i18n="university_title">University</h2>
+            <p data-i18n="university_subtitle">Manage lectures, exams, and study days.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3 data-i18n="university_subjects">Subjects</h3>
+              <ul class="list">
+                <li data-i18n="subject_data">Data Structures</li>
+                <li data-i18n="subject_ai">AI Fundamentals</li>
+                <li data-i18n="subject_math">Discrete Math</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="university_schedule">Schedules</h3>
+              <p data-i18n="university_schedule_desc">
+                Create lecture schedules, exam dates, and study sessions manually.
+              </p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="university_automation">Automation</h3>
+              <ul class="list">
+                <li data-i18n="university_auto_reminders">Auto reminders before lectures and exams.</li>
+                <li data-i18n="university_auto_calendar">All dates sync to the central calendar.</li>
+              </ul>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="university_add">Add Lecture / Exam</h3>
+              <form class="form">
+                <label class="form__field">
+                  <span data-i18n="university_subject">Subject</span>
+                  <input type="text" placeholder="Data Structures" data-i18n-placeholder="university_subject_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="university_type">Type</span>
+                  <select>
+                    <option data-i18n="university_type_lecture">Lecture</option>
+                    <option data-i18n="university_type_exam">Exam</option>
+                    <option data-i18n="university_type_study">Study Day</option>
+                  </select>
+                </label>
+                <label class="form__field">
+                  <span data-i18n="university_date">Date</span>
+                  <input type="date" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="university_time">Time</span>
+                  <input type="time" />
+                </label>
+                <button type="button" class="button" data-i18n="university_add_button">Add to Calendar</button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="courses">
+          <div class="section__header">
+            <h2 data-i18n="courses_title">Courses & Self-Learning</h2>
+            <p data-i18n="courses_subtitle">Track independent learning progress.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3 data-i18n="courses_plan">Study Plan</h3>
+              <p data-i18n="courses_plan_desc">Define course name, platform, and weekly plan.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="courses_sessions">Study Sessions</h3>
+              <ul class="list">
+                <li data-i18n="courses_session_example">Tue · 1 hour · React Basics</li>
+                <li data-i18n="courses_session_example_two">Thu · 2 hours · System Design</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="courses_automation">Automation</h3>
+              <ul class="list">
+                <li data-i18n="courses_hours">Total study hours and weekly consistency.</li>
+                <li data-i18n="courses_streak">Study streak and missed session alerts.</li>
+              </ul>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="courses_log">Log Study Session</h3>
+              <form class="form">
+                <label class="form__field">
+                  <span data-i18n="courses_course">Course</span>
+                  <input type="text" placeholder="System Design" data-i18n-placeholder="courses_course_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="courses_platform">Platform</span>
+                  <input type="text" placeholder="YouTube" data-i18n-placeholder="courses_platform_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="courses_duration">Duration</span>
+                  <input type="text" placeholder="1 hour" data-i18n-placeholder="courses_duration_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="courses_date">Date</span>
+                  <input type="date" />
+                </label>
+                <button type="button" class="button" data-i18n="courses_log_button">Save Session</button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="calendar">
+          <div class="section__header">
+            <h2 data-i18n="calendar_title">Time & Meetings</h2>
+            <p data-i18n="calendar_subtitle">Unified calendar for all events.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3 data-i18n="calendar_view">Calendar View</h3>
+              <p data-i18n="calendar_view_desc">All academic, learning, and personal events appear here.</p>
+              <div class="timeline">
+                <div class="timeline__item">
+                  <span data-i18n="calendar_event_one">10:00 · Data Structures lecture</span>
+                  <span class="timeline__meta" data-i18n="calendar_source_university">University</span>
+                </div>
+                <div class="timeline__item">
+                  <span data-i18n="calendar_event_two">15:00 · Gym (Pull)</span>
+                  <span class="timeline__meta" data-i18n="calendar_source_gym">Gym</span>
+                </div>
+                <div class="timeline__item">
+                  <span data-i18n="calendar_event_three">19:00 · Script review</span>
+                  <span class="timeline__meta" data-i18n="calendar_source_youtube">YouTube</span>
+                </div>
+              </div>
+            </article>
+            <article class="card">
+              <h3 data-i18n="calendar_events">Manual Events</h3>
+              <ul class="list">
+                <li data-i18n="calendar_events_example">Meeting · Sun 5:00 PM</li>
+                <li data-i18n="calendar_events_example_two">Personal review · Wed 7:30 PM</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="calendar_reminders">Reminder Engine</h3>
+              <p data-i18n="calendar_reminders_desc">Time-based and date-based alerts connected to every page.</p>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="calendar_add">Create Event</h3>
+              <form class="form">
+                <label class="form__field">
+                  <span data-i18n="calendar_title_label">Title</span>
+                  <input type="text" placeholder="Mentor call" data-i18n-placeholder="calendar_title_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="calendar_date">Date</span>
+                  <input type="date" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="calendar_time">Time</span>
+                  <input type="time" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="calendar_type">Type</span>
+                  <select>
+                    <option data-i18n="calendar_type_academic">Academic</option>
+                    <option data-i18n="calendar_type_learning">Learning</option>
+                    <option data-i18n="calendar_type_personal">Personal</option>
+                  </select>
+                </label>
+                <button type="button" class="button" data-i18n="calendar_add_button">Add Event</button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="gym">
+          <div class="section__header">
+            <h2 data-i18n="gym_title">Gym & Fitness</h2>
+            <p data-i18n="gym_subtitle">Track workouts and monitor progress.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3 data-i18n="gym_split">Workout Split</h3>
+              <ul class="list">
+                <li data-i18n="gym_push">Push</li>
+                <li data-i18n="gym_pull">Pull</li>
+                <li data-i18n="gym_legs">Legs</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="gym_entries">Workout Entries</h3>
+              <p data-i18n="gym_entries_desc">Log date, exercise name, weight, and notes.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="gym_automation">Automation</h3>
+              <ul class="list">
+                <li data-i18n="gym_frequency">Monthly gym frequency and inactivity alerts.</li>
+                <li data-i18n="gym_progress">Weight progress per exercise and best stats.</li>
+              </ul>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="gym_log">Log Workout</h3>
+              <form class="form">
+                <label class="form__field">
+                  <span data-i18n="gym_workout">Workout</span>
+                  <select>
+                    <option data-i18n="gym_push">Push</option>
+                    <option data-i18n="gym_pull">Pull</option>
+                    <option data-i18n="gym_legs">Legs</option>
+                  </select>
+                </label>
+                <label class="form__field">
+                  <span data-i18n="gym_exercise">Exercise</span>
+                  <input type="text" placeholder="Bench press" data-i18n-placeholder="gym_exercise_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="gym_weight">Weight</span>
+                  <input type="text" placeholder="60 kg" data-i18n-placeholder="gym_weight_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="gym_notes">Notes</span>
+                  <input type="text" placeholder="Felt strong" data-i18n-placeholder="gym_notes_placeholder" />
+                </label>
+                <button type="button" class="button" data-i18n="gym_log_button">Save Workout</button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="youtube">
+          <div class="section__header">
+            <h2 data-i18n="youtube_title">YouTube Content</h2>
+            <p data-i18n="youtube_subtitle">From idea to published video.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3 data-i18n="youtube_stage_ideas">Stage 1 · Ideas</h3>
+              <ul class="list">
+                <li data-i18n="youtube_idea_example">"Minimal desk setup" · Tech</li>
+                <li data-i18n="youtube_idea_example_two">"Study with me" · Lifestyle</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="youtube_stage_prep">Stage 2 · Preparation</h3>
+              <ul class="list">
+                <li data-i18n="youtube_prep_script">Script: 2 drafts pending.</li>
+                <li data-i18n="youtube_prep_edit">Editing: 1 video in progress.</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3 data-i18n="youtube_stage_published">Stage 3 · Published</h3>
+              <p data-i18n="youtube_published_desc">Archive publish date, link, and notes.</p>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="youtube_add">Add Idea</h3>
+              <form class="form">
+                <label class="form__field">
+                  <span data-i18n="youtube_title_label">Idea Title</span>
+                  <input type="text" placeholder="Productivity routine" data-i18n-placeholder="youtube_title_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="youtube_category">Category</span>
+                  <input type="text" placeholder="Productivity" data-i18n-placeholder="youtube_category_placeholder" />
+                </label>
+                <label class="form__field">
+                  <span data-i18n="youtube_description">Description</span>
+                  <input type="text" placeholder="Short summary" data-i18n-placeholder="youtube_description_placeholder" />
+                </label>
+                <button type="button" class="button" data-i18n="youtube_add_button">Save Idea</button>
+              </form>
+            </article>
+          </div>
+        </section>
+
+        <section class="section" id="settings">
+          <div class="section__header">
+            <h2 data-i18n="settings_title">Settings</h2>
+            <p data-i18n="settings_subtitle">Personalize reminders and UI preferences.</p>
+          </div>
+          <div class="grid">
+            <article class="card">
+              <h3 data-i18n="settings_language">Language</h3>
+              <p data-i18n="settings_language_desc">Toggle between Arabic and English.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="settings_notifications">Reminder Preferences</h3>
+              <p data-i18n="settings_notifications_desc">Adjust notification timing and channels.</p>
+            </article>
+            <article class="card">
+              <h3 data-i18n="settings_ui">UI Preferences</h3>
+              <p data-i18n="settings_ui_desc">Choose compact or spacious layout.</p>
+            </article>
+            <article class="card card--wide">
+              <h3 data-i18n="settings_controls">Personalization</h3>
+              <form class="form">
+                <label class="form__field">
+                  <span data-i18n="settings_reminder_window">Reminder window</span>
+                  <select>
+                    <option data-i18n="settings_reminder_30">30 minutes before</option>
+                    <option data-i18n="settings_reminder_60">1 hour before</option>
+                    <option data-i18n="settings_reminder_day">1 day before</option>
+                  </select>
+                </label>
+                <label class="form__field">
+                  <span data-i18n="settings_density">UI density</span>
+                  <select>
+                    <option data-i18n="settings_density_comfort">Comfortable</option>
+                    <option data-i18n="settings_density_compact">Compact</option>
+                  </select>
+                </label>
+                <button type="button" class="button" data-i18n="settings_save">Save Settings</button>
+              </form>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
